@@ -1,0 +1,13 @@
+<h2><%= @user.username %></h2>
+
+<div class="card-columns">
+  <% @posts.each do |post| %>
+    <div class="card">
+      <div class="card-body p-1">
+        <%= image_tag post.image, class: 'd-block w-100' %>
+
+        <p class="my-1"><%= post.title %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
