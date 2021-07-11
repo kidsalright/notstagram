@@ -1,49 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Notstagram</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Notstagram</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <div class="navbar navbar-expand-lg bg-dark navbar-dark mb-3">
-        <div class="container">
-          <%= link_to "NOTSTAGRAM", root_path, class: 'navbar-brand' %>
-
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <%= link_to "Upload", upload_path, class: 'btn btn-primary' %>
-            </li>
-          </ul>
-
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to current_user.username, profile_path(current_user.username), class: 'nav-link' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Log Out", destroy_user_session_path, class: 'nav-link', method: :delete %>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to "Sign In", new_user_session_path, class: 'nav-link' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Create an Account", new_user_registration_path, class: 'btn btn-primary' %>
-                </li>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
+<body>
+  <div class="navbar bg-dark navbar-dark">
     <div class="container">
-      <%= yield %>
+      <%= link_to image_tag("logo.gif", style: "height: 50px; width: auto"), root_path, class: 'navbar-brand' %>
+      <%= link_to "Create post", upload_path, class: 'btn btn-primary' %>
+      <% if user_signed_in? %>
+        <%= link_to image_tag(current_user.display_avatar(current_user), style: 'height: 50px; width: 50px', class: 'img-fluid rounded-circle'), profile_path(current_user.username), class: 'nav-link' %>
+        <%= link_to "Log Out", destroy_user_session_path, class: 'nav-link', method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path, class: 'nav-link' %>
+        <%= link_to "Create an Account", new_user_registration_path, class: 'btn btn-primary' %>
+      <% end %>
     </div>
-  </body>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
 </html>

@@ -6,6 +6,16 @@ class User < ApplicationRecord
 
   has_many :posts
 
+  has_one_attached :avatar
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  
+
+  def display_avatar(user)
+    if user.avatar.attached?
+      user.avatar
+    else
+      'default.png'
+    end
+  end
+
 end
