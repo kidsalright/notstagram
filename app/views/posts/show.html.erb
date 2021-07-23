@@ -12,7 +12,7 @@
 
     <p class="border-top mt-3 py-2">
       <% if @post.title.present? %>
-        <%= @post.title %> -
+        <%= @post.title %>
       <% end %>
       <span class="text-muted"><%= time_ago_in_words @post.created_at %> ago</span>
     </p>

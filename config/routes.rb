@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   get '/upload', to: 'posts#new'
   resources :posts, only: [:index, :show, :create]
 
-  get '/:username', to: 'users#show', as: :profile
+  get '/:username', to: 'users#index', as: :profile
 
 end
