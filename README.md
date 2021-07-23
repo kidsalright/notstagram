@@ -1,24 +1,30 @@
-# README
+# Instagram clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Done:
 
-Things you may want to cover:
+# header with:   DONE FULLY
 
-* Ruby version
+* main page logo link
+* signin/signup buttons
+* uploading button
+* clickable avatar with profile/logout links menu
 
-* System dependencies
 
-* Configuration
+# posts feed that displays:   NOT DONE
 
-* Database creation
+* avatar and username that links users profile
+* picture and text
+* posting time
 
-* Database initialization
+TODO:
 
-* How to run the test suite
+# posts:
 
-* Services (job queues, cache servers, search engines, etc.)
+* likes and comments mechanics
+* scrolling pagination
 
-* Deployment instructions
 
-* ...
+# profiles:
+
+* editing profile and avatar
+* showing posts in 3 columns
