@@ -72,7 +72,7 @@
       <div class="d-flex me-1">
         <div class="nav-item dropdown">
           <div class="nav-link drop-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag(current_user.display_avatar(current_user), style: 'max-width:35px', class: 'img-fluid rounded-circle') %>
+            <%= image_tag(current_user.display_avatar(current_user), style: 'width:35px; height:35px', class: 'img-fluid rounded-circle') %>
           </div>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><%= link_to "Profile", profile_path(current_user.username), class: 'dropdown-item' %></li>

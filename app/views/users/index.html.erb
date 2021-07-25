@@ -1,11 +1,15 @@
-<br>
-<br>
-<br>
-<br>
 <div class="card mb-3 y-100" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <%= image_tag(@user.display_avatar(@user), class: 'img-fluid rounded-start') %>
+      <%= image_tag(@user.display_avatar(@user), class: 'img-fluid rounded-circle', style: 'height: 150px; width: 150px')%>
+      <%= form_for @user do |f| %>
+
+      <div class="form-group">
+        <%= f.file_field :avatar, accept: 'image/png,image/jpeg' %>
+      </div>
+
+      <%= f.submit 'change avatar', class: 'btn btn-primary' %>
+      <% end %>
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -15,16 +19,30 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="cols-lg-3">
-    <div class="card-group">
-      <% @posts.each do |post| %>
-      <div class="card">
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @posts.each do |post| %>
+    <div class="col">
+      <div class="card h-100">
         <%= image_tag post.image, class: 'card-img-top' %>
         <div class="card-body">
+          <% pre_like = post.likes.find { |like| like.user == current_user} %>
+          <% if pre_like %>
+          <h1><%= link_to '♥', post_like_path(post, pre_like), method: :delete %></h1>
+          <% else %>
+          <h1><%= link_to '♡', post_likes_path(post), method: :post %></h1>
+          <% end %>
+          <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
         </div>
-        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"> <%= post.title %> </h5>
+          <span class="text-muted card-text"><%= time_ago_in_words post.created_at %> ago</span>
+        </div>
+        <div class="card-body">
+          <h5> <%= "Comments: #{post.comments.count}" %> </h5>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
